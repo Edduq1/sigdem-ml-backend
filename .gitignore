@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+
+.env
+
+uploads/
+ml_models/
+
+*.log
+.DS_Store
+.vscode/
