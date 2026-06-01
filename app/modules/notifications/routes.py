@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, BackgroundTasks
 from sqlalchemy.orm import Session
 
 from app.database.connection import get_db
@@ -7,7 +7,7 @@ from app.utils.roles import RoleChecker
 
 from app.modules.notifications.schema import NotificationCreate, NotificationResponse
 from app.modules.notifications.service import (
-    create_notification,
+    create_notification_background,
     get_notifications,
     get_notification_by_id,
     resend_notification
@@ -29,12 +29,18 @@ can_manage_notifications = RoleChecker([
 
 
 @router.post("/email", response_model=NotificationResponse)
-def send_notification(
+def send_email_notification(
     data: NotificationCreate,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(can_manage_notifications)
 ):
-    return create_notification(db, data, current_user)
+    return create_notification_background(
+        db=db,
+        data=data,
+        current_user=current_user,
+        background_tasks=background_tasks
+    )
 
 
 @router.get("/", response_model=list[NotificationResponse])
