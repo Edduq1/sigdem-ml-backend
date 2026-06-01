@@ -11,7 +11,8 @@ from app.modules.cvs.service import (
     get_cvs,
     get_cv_by_id,
     extract_text_from_cv,
-    delete_cv
+    delete_cv,
+    download_cv
 )
 
 
@@ -64,6 +65,15 @@ def detail_cv(
     current_user: User = Depends(rrhh_or_admin)
 ):
     return get_cv_by_id(db, cv_id)
+
+
+@router.get("/{cv_id}/download")
+def download_cv_file(
+    cv_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(rrhh_or_admin)
+):
+    return download_cv(db, cv_id)
 
 
 @router.post("/{cv_id}/extract", response_model=CVExtractResponse)

@@ -5,6 +5,7 @@ from uuid import uuid4
 import fitz
 
 from fastapi import UploadFile, HTTPException, status
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
 from app.modules.cvs.model import CV
@@ -149,3 +150,19 @@ def delete_cv(db: Session, cv_id: int):
     return {
         "message": "Currículo eliminado correctamente"
     }
+
+
+def download_cv(db: Session, cv_id: int):
+    cv = get_cv_by_id(db, cv_id)
+
+    if not os.path.exists(cv.ruta_archivo):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="El archivo físico del CV no existe en el servidor"
+        )
+
+    return FileResponse(
+        path=cv.ruta_archivo,
+        filename=cv.nombre_original,
+        media_type=cv.tipo_archivo or "application/octet-stream"
+    )

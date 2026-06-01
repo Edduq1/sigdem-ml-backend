@@ -6,13 +6,13 @@ Backend desarrollado para el proyecto **SIGDEM-ML**, orientado a la **Municipali
 
 Este repositorio contiene únicamente el **backend** del sistema. Está desarrollado con **FastAPI**, **PostgreSQL**, **SQLAlchemy**, **JWT**, **Machine Learning con Random Forest**, **OCR para documentos**, **NLP para análisis de CVs**, envío de correos SMTP y generación de reportes en PDF.
 
----
+***
 
 ## Autor
 
 **Eduard Fabrizio De La Cruz Alvarez**
 
----
+***
 
 ## Nombre del proyecto
 
@@ -20,7 +20,7 @@ Este repositorio contiene únicamente el **backend** del sistema. Está desarrol
 
 **Sistema Inteligente de Gestión Documental, Expedientes y Selección de Personal mediante Machine Learning**
 
----
+***
 
 ## Descripción general del proyecto
 
@@ -43,7 +43,7 @@ SIGDEM-ML propone una solución backend que permite:
 - Generar reportes JSON y PDF.
 - Proteger endpoints mediante autenticación JWT y roles.
 
----
+***
 
 ## Tecnologías utilizadas
 
@@ -65,7 +65,7 @@ SIGDEM-ML propone una solución backend que permite:
 - SMTP Gmail
 - Python Multipart
 
----
+***
 
 ## Arquitectura general
 
@@ -111,7 +111,7 @@ sigdem-ml-backend/
 └── requirements.txt
 ```
 
----
+***
 
 ## Requisitos previos
 
@@ -123,7 +123,7 @@ Antes de ejecutar el proyecto se necesita tener instalado:
 - Visual Studio Code o editor similar.
 - Postman para probar endpoints.
 
----
+***
 
 ## Instalación del proyecto
 
@@ -134,7 +134,7 @@ git clone URL_DEL_REPOSITORIO
 cd sigdem-ml-backend
 ```
 
----
+***
 
 ### 2. Crear entorno virtual
 
@@ -157,7 +157,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
----
+***
 
 ### 3. Instalar dependencias
 
@@ -171,7 +171,7 @@ Si se agregan nuevas dependencias durante el desarrollo:
 pip freeze > requirements.txt
 ```
 
----
+***
 
 ### 4. Configurar variables de entorno
 
@@ -199,7 +199,7 @@ Importante:
 - `SMTP_PASSWORD` debe ser una contraseña de aplicación de Gmail.
 - El archivo `.env` no debe subirse a GitHub.
 
----
+***
 
 ### 5. Crear base de datos en PostgreSQL
 
@@ -211,7 +211,7 @@ CREATE DATABASE sigdem_ml_db;
 
 Las tablas se crean automáticamente al levantar el servidor si el proyecto usa `Base.metadata.create_all()` en `main.py`.
 
----
+***
 
 ### 6. Ejecutar el servidor
 
@@ -231,7 +231,7 @@ Documentación Swagger:
 http://127.0.0.1:8000/docs
 ```
 
----
+***
 
 ## Archivo `.gitignore` recomendado
 
@@ -249,11 +249,11 @@ ml_models/
 .vscode/
 ```
 
----
+***
 
 # Módulos del sistema
 
----
+***
 
 ## 1. Módulo Auth
 
@@ -269,7 +269,7 @@ Incluye:
 - Perfil autenticado.
 - Bloqueo de usuarios inactivos.
 
----
+***
 
 ### Registrar administrador inicial
 
@@ -303,7 +303,7 @@ Respuesta esperada:
 
 Este endpoint solo se usa una vez. Si ya existe un usuario, no permitirá crear otro administrador inicial.
 
----
+***
 
 ### Login
 
@@ -330,7 +330,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Refresh token
 
@@ -356,7 +356,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Logout
 
@@ -388,7 +388,7 @@ Respuesta:
 
 Este endpoint invalida tanto el access token como el refresh token.
 
----
+***
 
 ### Perfil del usuario autenticado
 
@@ -415,7 +415,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 2. Módulo Users
 
@@ -430,7 +430,7 @@ ANALISTA
 RRHH
 ```
 
----
+***
 
 ### Listar usuarios
 
@@ -459,7 +459,7 @@ Respuesta:
 ]
 ```
 
----
+***
 
 ### Crear usuario
 
@@ -497,7 +497,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Ver detalle de usuario
 
@@ -511,7 +511,7 @@ Ejemplo:
 GET /api/users/3
 ```
 
----
+***
 
 ### Editar usuario
 
@@ -530,7 +530,7 @@ Body:
 }
 ```
 
----
+***
 
 ### Desactivar usuario
 
@@ -557,7 +557,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Activar usuario
 
@@ -571,7 +571,7 @@ Ejemplo:
 PATCH /api/users/2/activate
 ```
 
----
+***
 
 ### Eliminar usuario
 
@@ -587,7 +587,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 3. Módulo Trámites
 
@@ -613,7 +613,7 @@ ALTA
 CRITICA
 ```
 
----
+***
 
 ### Crear trámite
 
@@ -651,7 +651,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Listar trámites
 
@@ -667,7 +667,7 @@ GET /api/tramites/?prioridad=MEDIA
 GET /api/tramites/?area=Desarrollo
 ```
 
----
+***
 
 ### Ver detalle de trámite
 
@@ -681,7 +681,7 @@ Ejemplo:
 GET /api/tramites/1
 ```
 
----
+***
 
 ### Editar trámite
 
@@ -701,7 +701,7 @@ Body:
 }
 ```
 
----
+***
 
 ### Cambiar estado del trámite
 
@@ -720,7 +720,7 @@ Body:
 
 Este endpoint cambia el estado del trámite y envía una notificación automática al correo del solicitante si existe `correo_solicitante`.
 
----
+***
 
 ### Asignar analista
 
@@ -739,7 +739,7 @@ Body:
 
 Solo permite asignar usuarios con rol `ANALISTA`.
 
----
+***
 
 ### Ver historial del trámite
 
@@ -764,13 +764,13 @@ Respuesta:
 ]
 ```
 
----
+***
 
 ## 4. Módulo Machine Learning para Trámites
 
 Este módulo usa **Random Forest Classifier** para priorizar trámites.
 
----
+***
 
 ### Entrenar modelo
 
@@ -788,7 +788,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Ver métricas del modelo
 
@@ -813,7 +813,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Clasificar prioridad manualmente
 
@@ -843,7 +843,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Predecir prioridad de trámite existente
 
@@ -868,13 +868,13 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 5. Módulo Documents
 
 Este módulo permite subir, listar, descargar, eliminar y procesar documentos mediante extracción de texto.
 
----
+***
 
 ### Subir documento
 
@@ -906,7 +906,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Listar documentos
 
@@ -920,7 +920,7 @@ Filtrar por trámite:
 GET /api/documents/?tramite_id=1
 ```
 
----
+***
 
 ### Ver detalle de documento
 
@@ -928,7 +928,7 @@ GET /api/documents/?tramite_id=1
 GET /api/documents/{document_id}
 ```
 
----
+***
 
 ### Descargar documento
 
@@ -942,7 +942,7 @@ Ejemplo:
 GET /api/documents/1/download
 ```
 
----
+***
 
 ### Procesar OCR / extraer texto
 
@@ -960,7 +960,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Eliminar documento
 
@@ -976,7 +976,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 6. Módulo HR / Convocatorias
 
@@ -990,7 +990,7 @@ PAUSADA
 CERRADA
 ```
 
----
+***
 
 ### Crear convocatoria
 
@@ -1029,7 +1029,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Listar convocatorias
 
@@ -1044,7 +1044,7 @@ GET /api/hr/jobs/?estado=ABIERTA
 GET /api/hr/jobs/?area=Tecnología
 ```
 
----
+***
 
 ### Ver detalle de convocatoria
 
@@ -1052,7 +1052,7 @@ GET /api/hr/jobs/?area=Tecnología
 GET /api/hr/jobs/{job_id}
 ```
 
----
+***
 
 ### Editar convocatoria
 
@@ -1069,7 +1069,7 @@ Body:
 }
 ```
 
----
+***
 
 ### Eliminar convocatoria
 
@@ -1085,13 +1085,13 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 7. Módulo CVs
 
 Este módulo permite subir CVs, asociarlos a una convocatoria y extraer texto para análisis NLP.
 
----
+***
 
 ### Subir CV
 
@@ -1129,7 +1129,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Listar CVs
 
@@ -1143,7 +1143,7 @@ Filtrar por convocatoria:
 GET /api/cvs/?job_id=1
 ```
 
----
+***
 
 ### Ver detalle de CV
 
@@ -1151,7 +1151,7 @@ GET /api/cvs/?job_id=1
 GET /api/cvs/{cv_id}
 ```
 
----
+***
 
 ### Extraer texto del CV
 
@@ -1169,7 +1169,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Eliminar CV
 
@@ -1185,13 +1185,13 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 8. Módulo NLP para CVs
 
 Este módulo compara un CV con una convocatoria usando **TF-IDF** y **Cosine Similarity**.
 
----
+***
 
 ### Comparar CV con convocatoria
 
@@ -1221,7 +1221,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Ranking de candidatos por convocatoria
 
@@ -1255,13 +1255,13 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 9. Módulo Dashboard
 
 Este módulo devuelve métricas generales para el frontend.
 
----
+***
 
 ### Resumen general
 
@@ -1281,7 +1281,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Trámites por estado
 
@@ -1300,7 +1300,7 @@ Respuesta:
 ]
 ```
 
----
+***
 
 ### Trámites por prioridad
 
@@ -1319,7 +1319,7 @@ Respuesta:
 ]
 ```
 
----
+***
 
 ### Dashboard RRHH
 
@@ -1338,7 +1338,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 10. Módulo Notifications
 
@@ -1361,7 +1361,7 @@ FALLIDO
 SIMULADO
 ```
 
----
+***
 
 ### Enviar notificación manual
 
@@ -1396,7 +1396,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Listar notificaciones
 
@@ -1411,7 +1411,7 @@ GET /api/notifications/?tramite_id=1
 GET /api/notifications/?estado=ENVIADO
 ```
 
----
+***
 
 ### Ver detalle de notificación
 
@@ -1419,7 +1419,7 @@ GET /api/notifications/?estado=ENVIADO
 GET /api/notifications/{notification_id}
 ```
 
----
+***
 
 ### Reenviar notificación
 
@@ -1443,13 +1443,13 @@ Respuesta:
 }
 ```
 
----
+***
 
 ## 11. Módulo Reports
 
 Este módulo genera reportes administrativos en formato JSON y PDF.
 
----
+***
 
 ### Reporte de trámites JSON
 
@@ -1477,7 +1477,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Reporte de documentos JSON
 
@@ -1496,7 +1496,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Reporte RRHH JSON
 
@@ -1518,7 +1518,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Reporte de notificaciones JSON
 
@@ -1538,7 +1538,7 @@ Respuesta:
 }
 ```
 
----
+***
 
 ### Exportar reporte de trámites PDF
 
@@ -1552,7 +1552,7 @@ Respuesta:
 Archivo PDF descargable: reporte_tramites.pdf
 ```
 
----
+***
 
 ### Exportar reporte documental PDF
 
@@ -1566,7 +1566,7 @@ Respuesta:
 Archivo PDF descargable: reporte_documentos.pdf
 ```
 
----
+***
 
 ### Exportar reporte RRHH PDF
 
@@ -1580,7 +1580,7 @@ Respuesta:
 Archivo PDF descargable: reporte_rrhh.pdf
 ```
 
----
+***
 
 ### Exportar reporte de notificaciones PDF
 
@@ -1594,7 +1594,7 @@ Respuesta:
 Archivo PDF descargable: reporte_notificaciones.pdf
 ```
 
----
+***
 
 # Flujo recomendado de pruebas en Postman
 
@@ -1625,18 +1625,18 @@ Para probar el sistema desde cero, seguir este orden:
 22. Cerrar sesión.
 ```
 
----
+***
 
 # Roles y permisos generales
 
-| Rol | Descripción |
-|---|---|
-| ADMIN | Control total del sistema |
+| Rol           | Descripción                            |
+| ------------- | -------------------------------------- |
+| ADMIN         | Control total del sistema              |
 | RECEPCIONISTA | Registro y gestión inicial de trámites |
-| ANALISTA | Revisión de trámites y predicciones |
-| RRHH | Gestión de convocatorias y CVs |
+| ANALISTA      | Revisión de trámites y predicciones    |
+| RRHH          | Gestión de convocatorias y CVs         |
 
----
+***
 
 # Seguridad implementada
 
@@ -1652,7 +1652,7 @@ El backend cuenta con:
 - Endpoints protegidos mediante `Authorization: Bearer Token`.
 - Bloqueo de refresh token revocado.
 
----
+***
 
 # Machine Learning implementado
 
@@ -1676,7 +1676,7 @@ Variables consideradas:
 - Observaciones.
 - Urgencia detectada por palabras clave.
 
----
+***
 
 ## NLP para CVs
 
@@ -1703,7 +1703,7 @@ Candidato parcialmente compatible
 Candidato con baja compatibilidad
 ```
 
----
+***
 
 # OCR implementado
 
@@ -1717,7 +1717,7 @@ El sistema permite:
 - Marcar documento como procesado.
 - Usar texto extraído para análisis posterior.
 
----
+***
 
 # Notificaciones
 
@@ -1731,7 +1731,7 @@ Cuando se cambia el estado de un trámite, el sistema puede notificar automátic
 correo_solicitante
 ```
 
----
+***
 
 # Reportes
 
@@ -1753,8 +1753,7 @@ Los archivos PDF se guardan en:
 uploads/reports/
 ```
 
---
-
+\--
 
 ## Configuración de variables de entorno
 
@@ -1782,7 +1781,6 @@ SMTP_FROM_EMAIL=tu_correo@gmail.com
 SMTP_USE_TLS=true
 ```
 
-
 # Carpetas generadas automáticamente
 
 Durante el uso del sistema se generan carpetas como:
@@ -1798,7 +1796,7 @@ Estas carpetas almacenan archivos subidos, reportes generados y modelos entrenad
 
 No se recomienda subir estas carpetas a GitHub.
 
----
+***
 
 # Comando principal de ejecución
 
@@ -1806,7 +1804,7 @@ No se recomienda subir estas carpetas a GitHub.
 uvicorn app.main:app --reload
 ```
 
----
+***
 
 # URL de documentación automática
 
@@ -1814,9 +1812,7 @@ uvicorn app.main:app --reload
 http://127.0.0.1:8000/docs
 ```
 
----
-
-
+***
 
 # Consumo del backend desde el frontend
 
@@ -1828,8 +1824,7 @@ La URL base del backend en entorno local es:
 http://127.0.0.1:8000
 ```
 
----
-
+***
 
 # Estado actual del backend
 
@@ -1846,7 +1841,7 @@ El backend cumple con los objetivos principales del caso práctico:
 - Reportes JSON y PDF.
 - Seguridad mediante JWT y roles.
 
----
+***
 
 # Próximas mejoras sugeridas
 
@@ -1864,7 +1859,7 @@ Aunque el backend ya cumple con el alcance principal, se pueden agregar mejoras 
 - Integración con WhatsApp Business API.
 - Mejora del modelo NLP con extracción de habilidades clave.
 
----
+***
 
 # Conclusión
 
